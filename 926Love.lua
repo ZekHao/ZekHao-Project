@@ -69,7 +69,7 @@ Happy birthday to you, my dear
 
 -- 5. 浪漫全屏下落函数
 local function SpawnParticle()
-    local items = {"🌸", "🍰", "❤️", "🎂", "🌹", "✨", "🎉", "❤️", "❣️", "💕", "💓", "💗", "💖", "💝", "🎂", "🌸", "🍰", "🌹", "✨"}
+    local items = {"🌸", "🍰", "❤️", "🎂", "🌹", "✨", "🎉", "❤️", "💕", "💖", "💝", "🎂", "🌸", "🍰", "🌹", "✨"}
     local p = Instance.new("TextLabel", Background)
     p.Text = items[math.random(1, #items)]
     p.Size = UDim2.new(0, 40, 0, 40)
