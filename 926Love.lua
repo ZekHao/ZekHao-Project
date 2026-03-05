@@ -98,7 +98,7 @@ task.spawn(function()
     -- 打字机效果
     for i = 1, #FullText do
         Content.Text = string.sub(FullText, 1, i)
-        task.wait(0.06)
+        task.wait(0.02)
     end
     
     -- 持续全屏下落
