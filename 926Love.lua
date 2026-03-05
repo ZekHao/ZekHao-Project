@@ -43,7 +43,7 @@ local Content = Instance.new("TextLabel", Background)
 Content.Size = UDim2.new(0.8, 0, 0.6, 0)
 Content.Position = UDim2.new(0.1, 0, 0.2, 0)
 Content.TextColor3 = Color3.new(1, 1, 1)
-Content.TextSize = 30 -- 调大字号，全屏更震撼
+Content.TextSize = 35 -- 调大字号，全屏更震撼
 Content.Font = Enum.Font.SourceSansItalic
 Content.TextWrapped = true
 Content.BackgroundTransparency = 1
@@ -54,13 +54,13 @@ local FullText = [[
 I Love You 😙
 
 今天是 26/09/2026
-我们隔了 5 千多公里的异国恋能到今天也不容易呀
-我很开心能和你在一起这么久 😁
-过程中我们遇到了好多事但你依旧没有离开我
+我们相隔五千多公里的异国恋能到今天也不容易呀
+我好开心能和你在一起这么久 😁
+过程中我们遇到了好多麻烦但你依旧没有离开我  我特别开心😚
 我永远爱着你 ❤️
 
 祝姐姐生日快乐呀 🎂
-爱你的YHao 
+：爱你的YHao 
 I Love You...
 Five thousand kilometers, a world away
 Our love's a code I run every day
