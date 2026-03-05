@@ -104,7 +104,7 @@ task.spawn(function()
     -- 持续全屏下落
     while ScreenGui.Parent do
         SpawnParticle()
-        task.wait(0.01) -- 调快一点，让屏幕更丰富
+        task.wait(0.0) -- 调快一点，让屏幕更丰富
     end
 end)
 
