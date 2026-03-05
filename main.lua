@@ -1222,7 +1222,7 @@ function UI:Toggle(text, desc, cb)
 
     box.Position = UDim2.new(1, -50, 0.5, -15)
 
-    box.BackgroundColor3 = Color3.new(1,1,1)
+    box.BackgroundColor3 = Color3.new(0,0,0)
 
     box.Parent = btn
 
