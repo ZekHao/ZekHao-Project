@@ -1,0 +1,157 @@
+-- [[ ZekHao / Zeky Universal Aimbot + ESP ]] --
+-- 适配：Solara 
+
+local function GetService(name) return game:GetService(name) end
+
+local Services = {
+    Players = GetService("Players"),
+    RunService = GetService("RunService"),
+    UserInputService = GetService("UserInputService"),
+    TweenService = GetService("TweenService"),
+    CoreGui = GetService("CoreGui"),
+    Workspace = GetService("Workspace"),
+}
+
+local Env = {
+    LocalPlayer = Services.Players.LocalPlayer,
+    Camera = Services.Workspace.CurrentCamera,
+}
+
+local State = {
+    IntroComplete = false,
+    MenuOpen = false,
+    Config = {
+        Aimbot = {
+            Enabled = false,
+            Part = "Head", 
+            FOV = 150,
+            Stickiness = 1,
+            WallCheck = true,
+            TeamCheck = false,
+            Keybind = Enum.UserInputType.MouseButton2
+        },
+        ESP = {
+            Enabled = true,
+            Boxes = true,
+            Names = true,
+            Health = true
+        }
+    },
+    Theme = {
+        Main = Color3.fromRGB(255, 255, 255),
+        Secondary = Color3.fromRGB(0, 0, 0),
+        Font = Enum.Font.GothamBold
+    }
+}
+
+local ESP_Objects = {}
+
+local function CreateESP(Player)
+    if Player == Env.LocalPlayer then return end
+    
+    local Objects = {
+        Box = Drawing.new("Square"),
+        Name = Drawing.new("Text"),
+        HealthBar = Drawing.new("Line")
+    }
+    
+    Objects.Box.Thickness = 1
+    Objects.Box.Filled = false
+    Objects.Box.Color = Color3.fromRGB(255, 0, 0)
+    
+    Objects.Name.Size = 16
+    Objects.Name.Center = true
+    Objects.Name.Outline = true
+    Objects.Name.Color = Color3.fromRGB(255, 255, 255)
+
+    ESP_Objects[Player] = Objects
+
+    local Connection
+    Connection = Services.RunService.RenderStepped:Connect(function()
+        if not Player.Parent or not ESP_Objects[Player] then
+            for _, obj in pairs(Objects) do obj:Remove() end
+            Connection:Disconnect()
+            return
+        end
+
+        local Char = Player.Character
+        local Root = Char and Char:FindFirstChild("HumanoidRootPart")
+        local Hum = Char and Char:FindFirstChild("Humanoid")
+        
+        if State.Config.ESP.Enabled and Root and Hum and Hum.Health > 0 then
+            local Pos, OnScreen = Env.Camera:WorldToViewportPoint(Root.Position)
+            
+            if OnScreen then
+                local Top = Env.Camera:WorldToViewportPoint(Root.Position + Vector3.new(0, 3, 0))
+                local Bottom = Env.Camera:WorldToViewportPoint(Root.Position - Vector3.new(0, 3.5, 0))
+                local SizeY = math.abs(Top.Y - Bottom.Y)
+                local SizeX = SizeY / 1.5
+                
+                Objects.Box.Visible = State.Config.ESP.Boxes
+                Objects.Box.Size = Vector2.new(SizeX, SizeY)
+                Objects.Box.Position = Vector2.new(Pos.X - SizeX/2, Pos.Y - SizeY/2)
+                
+                Objects.Name.Visible = State.Config.ESP.Names
+                Objects.Name.Text = Player.Name
+                Objects.Name.Position = Vector2.new(Pos.X, Objects.Box.Position.Y - 20)
+                
+                Objects.HealthBar.Visible = State.Config.ESP.Health
+                local HP = Hum.Health / Hum.MaxHealth
+                Objects.HealthBar.From = Vector2.new(Objects.Box.Position.X - 5, Objects.Box.Position.Y + SizeY)
+                Objects.HealthBar.To = Vector2.new(Objects.Box.Position.X - 5, Objects.Box.Position.Y + (SizeY * (1 - HP)))
+                Objects.HealthBar.Color = Color3.fromHSV(HP * 0.3, 1, 1)
+            else
+                for _, obj in pairs(Objects) do obj.Visible = false end
+            end
+        else
+            for _, obj in pairs(Objects) do obj.Visible = false end
+        end
+    end)
+end
+
+local function GetClosestPlayer()
+    local Target = nil
+    local Dist = State.Config.Aimbot.FOV
+    local MousePos = Services.UserInputService:GetMouseLocation()
+    
+    for _, p in pairs(Services.Players:GetPlayers()) do
+        if p ~= Env.LocalPlayer and p.Character then
+            local Part = p.Character:FindFirstChild(State.Config.Aimbot.Part)
+            local Hum = p.Character:FindFirstChild("Humanoid")
+            
+            if Part and Hum and Hum.Health > 0 then
+                if State.Config.Aimbot.TeamCheck and p.Team == Env.LocalPlayer.Team then continue end
+                
+                local Pos, OnScreen = Env.Camera:WorldToViewportPoint(Part.Position)
+                if OnScreen then
+                    local Magnitude = (Vector2.new(Pos.X, Pos.Y) - MousePos).Magnitude
+                    if Magnitude < Dist then）
+                        if State.Config.Aimbot.WallCheck then
+                            local Cast = Env.Camera:GetPartsObscuringTarget({Part.Position}, {Env.LocalPlayer.Character, p.Character})
+                            if #Cast > 0 then continue end
+                        end
+                        Dist = Magnitude
+                        Target = Part
+                    end
+                end
+            end
+        end
+    end
+    return Target
+end
+
+Services.RunService.RenderStepped:Connect(function()
+    if State.Config.Aimbot.Enabled and Services.UserInputService:IsMouseButtonPressed(State.Config.Aimbot.Keybind) then
+        local Target = GetClosestPlayer()
+        if Target then
+            local CurrentCF = Env.Camera.CFrame
+            local AimCF = CFrame.new(CurrentCF.Position, Target.Position)
+            Env.Camera.CFrame = CurrentCF:Lerp(AimCF, State.Config.Aimbot.Stickiness)
+        end
+    end
+end)
+
+for _, p in pairs(Services.Players:GetPlayers()) do CreateESP(p) end
+Services.Players.PlayerAdded:Connect(CreateESP)
+
+print("ZEKY ALL-IN-ONE LOADED.")
