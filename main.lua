@@ -1158,7 +1158,7 @@ function UI:Toggle(text, desc, cb)
 
     btn.Text = ""
 
-    btn.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+    btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 
     btn.Size = UDim2.new(1, 0, 0, 60)
 
