@@ -284,9 +284,9 @@ local State = {
 
     Theme = {
 
-        Main = Color3.fromRGB(255, 255, 255),
+        Main = Color3.fromRGB(0, 0, 0),
 
-        Secondary = Color3.fromRGB(0, 0, 0),
+        Secondary = Color3.fromRGB(255, 255, 255),
 
         Accent = Color3.fromRGB(50, 50, 50),
 
@@ -1276,7 +1276,7 @@ function UI:Slider(text, min, max, default, desc, cb)
 
     f.Size = UDim2.new(1, 0, 0, 80)
 
-    f.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+    f.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 
     f.Parent = self.Container
 
@@ -1358,7 +1358,7 @@ function UI:Slider(text, min, max, default, desc, cb)
 
     bar.AutoButtonColor = false
 
-    bar.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+    bar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 
     bar.Size = UDim2.new(1, -40, 0, 10)
 
@@ -1416,7 +1416,7 @@ function UI:Dropdown(text, options, cb)
 
     f.Size = UDim2.new(1, 0, 0, 60)
 
-    f.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+    f.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 
     f.ClipsDescendants = true
 
@@ -1530,7 +1530,7 @@ function UI:Dropdown(text, options, cb)
 
         b.TextColor3 = State.Theme.Secondary
 
-        b.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
+        b.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 
         b.Size = UDim2.new(1, 0, 0, 40)
 
