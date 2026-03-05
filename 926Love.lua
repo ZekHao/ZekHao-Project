@@ -60,7 +60,14 @@ I Love You 😙
 我永远爱着你 ❤️
 
 祝姐姐生日快乐呀 🎂
-爱你的YHao ]]
+爱你的YHao 
+I Love You...
+Five thousand kilometers, a world away
+Our love's a code I run every day
+So happy we made it through everything
+My forever love, I want to sing
+Happy birthday to you, my dear
+(Happy birthday, my love)]]
 
 -- 5. 浪漫全屏下落函数
 local function SpawnParticle()
