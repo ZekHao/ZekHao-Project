@@ -1,6 +1,4 @@
 -- [[ ZekHao / Zeky Private: FULLSCREEN ROMANCE VERSION ]] --
--- 适配场景：926 姐姐生日 5000公里告白
--- 特点：全屏粉色半透明、全屏下落粒子、打字机、右下角隐藏退出
 
 local Player = game:GetService("Players").LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
