@@ -715,7 +715,7 @@ function UI:Intro(on_finish)
 
     local title = Instance.new("TextLabel")
 
-    title.Text = UIUtils:Clean("辰凌自瞄（姐姐用完整版）")
+    title.Text = UIUtils:Clean("辰凌自瞄（姐姐 用完整版）")
 
     title.Font = State.Theme.Font
 
@@ -779,7 +779,7 @@ function UI:Intro(on_finish)
 
     local btn_simple = CreateBtn("simple version", 0.3)
 
-    local btn_full = CreateBtn("完整版", 0.7)
+    local btn_full = CreateBtn("汉化完整版", 0.7)
 
     
 
