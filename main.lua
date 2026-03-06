@@ -1039,7 +1039,7 @@ function UI:Construct()
 
         self:Toggle("墙壁检测", "防止隔墙瞄", function(v) State.Config.Aimbot.wallcheck = v end)
 
-        self:Toggle("团队检测", "不瞄队友", function(v) State.Config.Aimbot.teamcheck = v end)
+        self:Toggle("团队检测", "不瞄队友", function(v) State.Config.Aimbot.TeamCheck = v end)
 
         self:Toggle("自动瞄其他部位", "如果头被当着的话", function(v) State.Config.Aimbot.Multipoint = v end)
 
