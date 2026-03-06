@@ -715,7 +715,7 @@ function UI:Intro(on_finish)
 
     local title = Instance.new("TextLabel")
 
-    title.Text = UIUtils:Clean("建议用完整版")
+    title.Text = UIUtils:Clean("辰凌自瞄（建议用完整版）")
 
     title.Font = State.Theme.Font
 
@@ -732,8 +732,8 @@ function UI:Intro(on_finish)
     title.ZIndex = 2001
 
     title.Parent = frame
+   
 
-    
 
     local function CreateBtn(text, x_pos)
 
