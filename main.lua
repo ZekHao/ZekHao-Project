@@ -302,47 +302,20 @@ local State = {
 
 local PartMap = {
 
-    ["head (both rigs)"] = {"Head"},
+    ["头 (包括其他部位)"] = {"Head"},
 
-    ["humanoidrootpart (both rigs)"] = {"HumanoidRootPart"},
+    ["人体 (包括其他部位)"] = {"HumanoidRootPart"},
 
-    ["torso (r6 only)"] = {"Torso"},
+    ["躯干 (r6)"] = {"Torso"},
 
-    ["left arm (r6 only)"] = {"Left Arm"},
+    ["左手 (r6)"] = {"Left Arm"},
 
-    ["right arm (r6 only)"] = {"Right Arm"},
+    ["右手 (r6)"] = {"Right Arm"},
 
-    ["left leg (r6 only)"] = {"Left Leg"},
+    ["左脚 (r6)"] = {"Left Leg"},
 
-    ["right leg (r6 only)"] = {"Right Leg"},
+    ["右脚 (r6)"] = {"Right Leg"},
 
-    ["uppertorso (r15 only)"] = {"UpperTorso"},
-
-    ["lowertorso (r15 only)"] = {"LowerTorso"},
-
-    ["leftupperarm (r15 only)"] = {"LeftUpperArm"},
-
-    ["leftlowerarm (r15 only)"] = {"LeftLowerArm"},
-
-    ["rightupperarm (r15 only)"] = {"RightUpperArm"},
-
-    ["rightlowerarm (r15 only)"] = {"RightLowerArm"},
-
-    ["lefthand (r15 only)"] = {"LeftHand"},
-
-    ["righthand (r15 only)"] = {"RightHand"},
-
-    ["leftfoot (r15 only)"] = {"LeftFoot"},
-
-    ["rightfoot (r15 only)"] = {"RightFoot"},
-
-    ["leftupperleg (r15 only)"] = {"LeftUpperLeg"},
-
-    ["leftlowerleg (r15 only)"] = {"LeftLowerLeg"},
-
-    ["rightupperleg (r15 only)"] = {"RightUpperLeg"},
-
-    ["rightlowerleg (r15 only)"] = {"RightLowerLeg"}
 
 }
 
@@ -1030,7 +1003,7 @@ function UI:Construct()
 
         self:Label("simple settings")
 
-        self:Toggle("enable aimbot", nil, function(v) State.Config.Aimbot.Enabled = v end)
+        self:Toggle("enble aimbor", nil, function(v) State.Config.Aimbot.Enabled = v end)
 
         self:Slider("fov size", 50, 600, 150, nil, function(v) State.Config.Aimbot.FOV = v end)
 
@@ -1042,15 +1015,15 @@ function UI:Construct()
 
     else
 
-        self:Label("aimbot settings")
+        self:Label("自瞄设定")
 
-        self:Toggle("enable aimbot", nil, function(v) State.Config.Aimbot.Enabled = v end)
+        self:Toggle("自瞄", nil, function(v) State.Config.Aimbot.Enabled = v end)
 
-        self:Dropdown("body part", DropdownList, function(v) State.Config.Aimbot.Part = v end)
+        self:Dropdown("瞄的部位", DropdownList, function(v) State.Config.Aimbot.Part = v end)
 
-        self:Slider("fov size", 50, 600, 150, nil, function(v) State.Config.Aimbot.FOV = v end)
+        self:Slider("圈圈大小", 50, 600, 150, nil, function(v) State.Config.Aimbot.FOV = v end)
 
-        self:Slider("stickiness", 0, 100, 100, "(suggested to put at 100%)", function(v) 
+        self:Slider("自瞄强度", 0, 100, 100, "(建议100%)", function(v) 
 
             local s = v/100
 
@@ -1062,19 +1035,19 @@ function UI:Construct()
 
         
 
-        self:Label("safety checks")
+        self:Label("防止乱瞄")
 
-        self:Toggle("wall check", "prevents locking through walls", function(v) State.Config.Aimbot.WallCheck = v end)
+        self:Toggle("墙壁检测", "防止隔墙瞄", function(v) State.Config.Aimbot.wallcheck = v end)
 
-        self:Toggle("team check", nil, function(v) State.Config.Aimbot.TeamCheck = v end)
+        self:Toggle("团队检测", "不瞄队友", function(v) State.Config.Aimbot.teamcheck = v end)
 
-        self:Toggle("multi-point", "scans body if head is hidden", function(v) State.Config.Aimbot.Multipoint = v end)
+        self:Toggle("自动瞄其他部位", "如果头被当着的话", function(v) State.Config.Aimbot.Multipoint = v end)
 
         
 
-        self:Label("extras")
+        self:Label("特殊功能")
 
-        self:Toggle("trigger bot", "auto fires when on target", function(v) State.Config.Triggerbot.Enabled = v end)
+        self:Toggle("自动开枪", "扫到人自动开枪", function(v) State.Config.Triggerbot.Enabled = v end)
 
     end
 
