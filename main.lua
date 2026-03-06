@@ -950,7 +950,7 @@ function UI:Construct()
 
     local title = Instance.new("TextLabel")
 
-    title.Text = UIUtils:Clean("real aimbot")
+    title.Text = UIUtils:Clean("ZekHao_aimbot for Ayo❤️")
 
     title.Font = Enum.Font.GothamBlack
 
@@ -972,7 +972,7 @@ function UI:Construct()
 
     local hint = Instance.new("TextLabel")
 
-    hint.Text = UIUtils:Clean("right ctrl to close")
+    hint.Text = UIUtils:Clean("右边的ctrl隐藏")
 
     hint.Font = State.Theme.Font
 
