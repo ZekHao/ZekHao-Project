@@ -923,7 +923,7 @@ function UI:Construct()
 
     local title = Instance.new("TextLabel")
 
-    title.Text = UIUtils:Clean("ZekHao_aimbot for Ayo❤️")
+    title.Text = UIUtils:Clean("辰凌自瞄 For Ayo❤️")
 
     title.Font = Enum.Font.GothamBlack
 
