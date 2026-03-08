@@ -133,12 +133,12 @@ if vu3.Character then
     v15()
     v36()
     wait(1)
-    v40("Fake Headless & Korblox", "Credit: ozashub also leaked by Boog X", 7)
+    v40("Fake Headless & Korblox", "Credit: ozashub also leaked By ZekHao", 7)
 else
     vu3.CharacterAdded:Wait()
     v29()
     v15()
     v36()
     wait(1)
-    v40("Fake Headless & Korblox", "Credit: ozashub also leaked by Boog X", 7)
+    v40("Fake Headless & Korblox", "Credit: ozashub also leaked By ZekHao", 7)
 end
