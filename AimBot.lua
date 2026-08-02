@@ -260,7 +260,7 @@ local State = {
 
             Stickiness = 1,
 
-            WallCheck = true,
+            WallCheck = false,
 
             Multipoint = false,
 
