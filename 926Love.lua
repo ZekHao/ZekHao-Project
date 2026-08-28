@@ -100,4 +100,4 @@ task.spawn(function()
     end
 end)
 
-print("ZekHao's Fullscreen Love is Loaded.")
+print("生日快乐宝宝")
